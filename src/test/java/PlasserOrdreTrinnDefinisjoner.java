@@ -3,21 +3,24 @@ import cucumber.api.PendingException;
 import cucumber.api.java.da.Når;
 import cucumber.api.java.no.Gitt;
 import cucumber.api.java.no.Så;
+import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 /**
  * @author nilstes
  */
 public class PlasserOrdreTrinnDefinisjoner {
     
-    private WebDriver driver = new FirefoxDriver();
+    private WebDriver driver = new HtmlUnitDriver();
     
     @Gitt("^at en bruker putter (\\d+) varer i handlekurven$")
     public void at_en_bruker_putter_varer_i_handlekurven(int arg1) throws Throwable {
         driver.get("http://localhost:8080/cuke"); 
+       
         Thread.sleep(2000); // Disse bruker vi kun for å kunne observere testen 
         WebElement element = driver.findElement(By.id("add-item")); 
         element.click(); 
